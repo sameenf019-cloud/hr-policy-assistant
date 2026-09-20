@@ -1,0 +1,27 @@
+# Secrets - NEVER commit these
+.streamlit/secrets.toml
+secrets.toml
+.env
+*.key
+
+# HR documents may be confidential - keep them out of the repo
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Caches / OS / IDE
+.cache/
+.huggingface/
+*.faiss
+*.index
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.ipynb_checkpoints/
