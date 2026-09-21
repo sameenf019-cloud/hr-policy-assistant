@@ -315,7 +315,7 @@ CSS_BASE = """
 .pill{display:inline-block;background:rgba(15,23,42,.30);border:1px solid rgba(255,255,255,.30);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:.2rem .75rem;border-radius:999px;
   font-size:.78rem;margin:0 .35rem .3rem 0}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:var(--hr-s3);margin:0 0 var(--hr-s4) 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--hr-s3);margin:0 0 var(--hr-s4) 0}
 .kpi{display:flex;gap:.8rem;align-items:center;padding:.85rem 1rem;border-radius:var(--hr-r-xl);
   background:var(--hr-surface);border:1px solid var(--hr-border);box-shadow:var(--hr-sh-sm);
   transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;animation:hr-fade .4s ease both}
@@ -403,17 +403,19 @@ CSS_BASE = """
 [data-testid="stChatInput"]{border-radius:var(--hr-r-xl);border:1px solid var(--hr-border);box-shadow:var(--hr-sh-md)}
 [data-testid="stChatInput"]:focus-within{border-color:rgba(124,58,237,.75);box-shadow:0 0 0 3px rgba(124,58,237,.25)}
 
-/* section navigation: st.radio (key="nav") restyled as a segmented pill bar */
+/* section navigation: st.radio (key="nav") restyled as a segmented pill bar (structure-agnostic selectors) */
 .st-key-nav div[role="radiogroup"]{display:flex;flex-wrap:wrap;gap:.3rem;padding:.35rem;border-radius:var(--hr-r-xl);
   background:var(--hr-surface);border:1px solid var(--hr-border);box-shadow:var(--hr-sh-sm)}
-.st-key-nav div[role="radiogroup"]>label{margin:0;padding:.42rem .95rem;border-radius:999px;cursor:pointer;
+.st-key-nav label{margin:0 !important;padding:.42rem .95rem;border-radius:999px;cursor:pointer;
   border:1px solid transparent;transition:background .15s ease,transform .15s ease,box-shadow .15s ease}
-.st-key-nav div[role="radiogroup"]>label:hover{background:var(--hr-surface-2);transform:translateY(-1px)}
-.st-key-nav div[role="radiogroup"]>label p{font-weight:600;font-size:.9rem;margin:0;white-space:nowrap}
+.st-key-nav label:hover{background:var(--hr-surface-2);transform:translateY(-1px)}
+.st-key-nav label p{font-weight:600;font-size:.9rem;margin:0;white-space:nowrap}
 @supports selector(:has(*)){
-  .st-key-nav div[role="radiogroup"]>label>div:first-child{display:none}
-  .st-key-nav div[role="radiogroup"]>label:has(input:checked){background:var(--hr-grad);box-shadow:var(--hr-sh-md)}
-  .st-key-nav div[role="radiogroup"]>label:has(input:checked) p{color:#fff !important}
+  .st-key-nav label>*:not(input):not(:has(p)){display:none !important}
+  .st-key-nav label:has(input:checked){background:var(--hr-grad);box-shadow:var(--hr-sh-md)}
+  .st-key-nav label:has(input[aria-checked="true"]){background:var(--hr-grad);box-shadow:var(--hr-sh-md)}
+  .st-key-nav label:has(input:checked) p{color:#fff !important}
+  .st-key-nav label:has(input[aria-checked="true"]) p{color:#fff !important}
 }
 
 /* clickable citation chips, feedback and follow-up pills (buttons keyed cite_*, fb_*, fu_*, ex_*) */
