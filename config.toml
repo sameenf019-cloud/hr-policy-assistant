@@ -1,0 +1,13 @@
+# Theme: indigo/violet accent. base is deliberately NOT set, so the app follows the
+# viewer's light/dark preference and every custom colour in app.py works in both modes.
+[theme]
+primaryColor = "#6d4ee8"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false
+
+# Rejects PDFs above 25 MB at upload time (same limit as MAX_FILE_MB in app.py).
+# If this block ever causes a problem, delete it - the app still enforces the limit itself.
+[server]
+maxUploadSize = 25
