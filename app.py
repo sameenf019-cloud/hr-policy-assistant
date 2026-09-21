@@ -320,6 +320,9 @@ CSS_BASE = """
   background:var(--hr-surface);border:1px solid var(--hr-border);box-shadow:var(--hr-sh-sm);
   transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;animation:hr-fade .4s ease both}
 .kpi:hover{transform:translateY(-3px);box-shadow:var(--hr-sh-md);border-color:rgba(124,58,237,.55)}
+.kpis{container-type:inline-size}
+@container (max-width:900px){.kpi{flex-direction:column;align-items:flex-start;gap:.45rem;padding:.8rem .85rem}
+  .kpi-ic{width:34px;height:34px;font-size:1rem;border-radius:11px}.kpi-v{font-size:1.3rem}.kpi-l{font-size:.74rem}}
 .kpi-ic{flex:0 0 auto;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.2rem;
   background:var(--hr-grad);color:#fff}
 .kpi-l{font-size:.76rem;font-weight:600;opacity:.78;letter-spacing:.01em}
@@ -389,6 +392,9 @@ CSS_BASE = """
 .stApp [data-testid="stMarkdownContainer"] th{background:var(--hr-surface-2)}
 .stApp [data-testid="stMarkdownContainer"] th,.stApp [data-testid="stMarkdownContainer"] td{padding:.5rem .7rem;vertical-align:top}
 
+.stApp [data-baseweb="tag"]{background:var(--hr-grad) !important;border-radius:999px !important}
+.stApp [data-baseweb="tag"],.stApp [data-baseweb="tag"] *{color:#fff !important}
+.stApp div[role="slider"]{background-color:#6d4ee8 !important}
 /* sidebar */
 [data-testid="stSidebar"]{border-right:1px solid var(--hr-border);
   background-image:linear-gradient(180deg,rgba(99,102,241,.10),rgba(236,72,153,.05) 55%,transparent)}
@@ -411,7 +417,7 @@ CSS_BASE = """
 .st-key-nav label:hover{background:var(--hr-surface-2);transform:translateY(-1px)}
 .st-key-nav label p{font-weight:600;font-size:.9rem;margin:0;white-space:nowrap}
 @supports selector(:has(*)){
-  .st-key-nav label>*:not(input):not(:has(p)){display:none !important}
+  .st-key-nav label *:not(input):not(:has(p)):not(p):not(p *){display:none !important}
   .st-key-nav label:has(input:checked){background:var(--hr-grad);box-shadow:var(--hr-sh-md)}
   .st-key-nav label:has(input[aria-checked="true"]){background:var(--hr-grad);box-shadow:var(--hr-sh-md)}
   .st-key-nav label:has(input:checked) p{color:#fff !important}
